@@ -14,8 +14,13 @@
 
     <!--    //mvc방식에 어노테이션 사용을 하겠다는 설정-->
     <mvc:annotation-driven/>
-    <mvc:resources mapping="/image/**" location="/resources/image/"/>
+    <mvc:resources mapping="/js/**" location="/resources/js/"/>
     <mvc:resources mapping="/css/**" location="/resources/css/"/>
+    <mvc:resources mapping="/image/**" location="/resources/image/"/>
+
+    <mvc:resources mapping="/bootstrap/**" location="/resources/bootstrap/"/>
+    <mvc:resources mapping="/startbootstrap/**" location="/resources/startbootstrap/"/>
+
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
@@ -24,6 +29,8 @@
     </bean>
 
     <context:component-scan base-package="kroryi.springex.controller"/>
+    <context:component-scan base-package="kroryi.springex.config"/>
+    <context:component-scan base-package="kroryi.springex.service"/>
 
     <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <property name="formatters">

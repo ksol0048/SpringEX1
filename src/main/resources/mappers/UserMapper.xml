@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kroryi.springex.mapper.UserMapper">
+
+    <select id="getNow" resultType="string">
+        select now()
+    </select>
+
+    <insert id="insert">
+        insert into tbl_user(user_id, user_name, user_pw, register_date)
+        values (#{user_id}, #{user_name}, #{user_pw}, #{register_date})
+    </insert>
+
+    <select id="selectAll" resultType="kroryi.springex.domain.UserVO">
+        select *
+        from tbl_user
+        order by user_id desc
+    </select>
+
+    <select id="selectOne" resultType="kroryi.springex.domain.UserVO">
+        select *
+        from tbl_user
+        where user_id = #{user_id}
+    </select>
+
+    <delete id="delete">
+        delete
+        from tbl_user
+        where user_id = #{user_id}
+    </delete>
+
+    <update id="modify">
+        update tbl_user
+        set user_name = #{user_name},
+            user_pw = #{user_pw}
+        where user_id = #{user_id}
+    </update>
+
+
+    <sql id="search">
+        <where>
+            <if test="types !=null and types.length >0">
+                <foreach collection="types" item="type" open="(" close=")" separator="OR">
+                    <if test="type =='i'.toString()">
+                        user_id like concat('%',#{keyword},'%')
+                    </if>
+                    <if test="type =='n'.toString()">
+                        user_name like concat('%',#{keyword},'%')
+                    </if>
+                </foreach>
+            </if>
+
+            <if test="from != null and to != null">
+                <trim prefix="and">
+                    register_date between #{from} and #{to}
+                </trim>
+            </if>
+        </where>
+    </sql>
+
+    <select id="selectList" resultType="kroryi.springex.domain.UserVO">
+        select *from tbl_user
+        <include refid="search"></include>
+        order by user_id desc limit #{skip},#{size}
+    </select>
+
+    <select id="getCount" resultType="int">
+        select count(user_id) from tbl_user
+        <include refid="search"></include>
+    </select>
+</mapper>

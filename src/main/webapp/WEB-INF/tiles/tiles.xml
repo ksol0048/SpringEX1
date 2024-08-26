@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <!-- 기본 레이아웃 정의 -->
+    <definition name="base.layout" template="/WEB-INF/tiles/layouts/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/tiles/layouts/header.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/tiles/layouts/footer.jsp"/>
+        <put-attribute name="body" value=""/>
+    </definition>
+
+    <!-- Home 페이지 정의 -->
+    <definition name="home.page" extends="base.layout">
+        <put-attribute name="body" value="/WEB-INF/tiles/layouts/home.jsp"/>
+    </definition>
+    <definition name="member_list.page" extends="base.layout">
+        <put-attribute name="body" value="/WEB-INF/tiles/layouts/member_list.jsp"/>
+    </definition>
+
+    <!-- 관리자페이지 레이아웃-->
+    <definition name="admin.layout" template="/WEB-INF/views/admin/layouts/admin-default.jsp">
+        <put-attribute name="admin-common" value="/WEB-INF/views/admin/layouts/admin-common.jsp"/>
+        <put-attribute name="admin-sidebar" value="/WEB-INF/views/admin/layouts/admin-sidebar.jsp"/>
+        <put-attribute name="admin-header" value="/WEB-INF/views/admin/layouts/admin-header.jsp"/>
+        <put-attribute name="admin-footer" value="/WEB-INF/views/admin/layouts/admin-footer.jsp"/>
+        <put-attribute name="admin-bootstrap" value="/WEB-INF/views/admin/layouts/bootstrap.jsp"/>
+        <put-attribute name="admin-logout-modal" value="/WEB-INF/views/admin/layouts/admin-logout-modal.jsp"/>
+        <put-attribute name="admin-body" value=""/>
+    </definition>
+
+    <!-- Home 페이지 정의 -->
+    <definition name="admin.index.page" extends="admin.layout">
+        <put-attribute name="admin-body" value="/WEB-INF/views/admin/index.jsp"/>
+    </definition>
+
+
+    <definition name="admin.memberlist.page" extends="admin.layout">
+        <put-attribute name="admin-body" value="/WEB-INF/views/admin/member/admin-member-list.jsp"/>
+    </definition>
+
+    <definition name="admin.memberregister.page" extends="admin.layout">
+        <put-attribute name="admin-body" value="/WEB-INF/views/admin/member/admin-member-register.jsp"/>
+    </definition>
+    <definition name="admin.memberview.page" extends="admin.layout">
+        <put-attribute name="admin-body" value="/WEB-INF/views/admin/member/admin-member-view.jsp"/>
+    </definition>
+    <definition name="admin.memberupdate.page" extends="admin.layout">
+        <put-attribute name="admin-body" value="/WEB-INF/views/admin/member/admin-member-update.jsp"/>
+    </definition>
+
+
+    <definition name="admin.todolist.page" extends="admin.layout">
+        <put-attribute name="admin-body" value="/WEB-INF/views/admin/todo/list.jsp"/>
+    </definition>
+    <definition name="admin.todoregister.page" extends="admin.layout">
+        <put-attribute name="admin-body" value="/WEB-INF/views/admin/todo/register.jsp"/>
+    </definition>
+    <definition name="admin.todoread.page" extends="admin.layout">
+        <put-attribute name="admin-body" value="/WEB-INF/views/admin/todo/read.jsp"/>
+    </definition>
+    <definition name="admin.todomodify.page" extends="admin.layout">
+        <put-attribute name="admin-body" value="/WEB-INF/views/admin/todo/modify.jsp"/>
+    </definition>
+
+
+    <definition name="admin.userlist.page" extends="admin.layout">
+        <put-attribute name="admin-body" value="/WEB-INF/views/admin/user/user-list.jsp"/>
+    </definition>
+    <definition name="admin.userregister.page" extends="admin.layout">
+        <put-attribute name="admin-body" value="/WEB-INF/views/admin/user/user-register.jsp"/>
+    </definition>
+    <definition name="admin.userread.page" extends="admin.layout">
+        <put-attribute name="admin-body" value="/WEB-INF/views/admin/user/user-read.jsp"/>
+    </definition>
+    <definition name="admin.usermodify.page" extends="admin.layout">
+        <put-attribute name="admin-body" value="/WEB-INF/views/admin/user/user-modify.jsp"/>
+    </definition>
+    <definition name="admin.forgot.page" extends="admin.layout">
+        <put-attribute name="admin-body" value="/WEB-INF/views/admin/user/forgot.jsp"/>
+    </definition>
+
+    <definition name="admin.userlogin.page" extends="admin.layout">
+        <put-attribute name="admin-body" value="/WEB-INF/views/admin/login/user-login.jsp"/>
+    </definition>
+
+
+
+</tiles-definitions>
